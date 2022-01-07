@@ -1,0 +1,10 @@
+Outputs:
+  PymongoLambdaLayer:
+    Value: !Ref PymongoLambdaLayer
+    Export:
+      Name: !Sub ${self:provider.stage}PymongoLambdaLayer
+  
+  PandasLambdaLayer:
+    Value: !Ref PandasLambdaLayer
+    Export:
+      Name: !Sub ${self:provider.stage}PandasLambdaLayer

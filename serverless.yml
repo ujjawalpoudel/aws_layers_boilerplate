@@ -1,0 +1,50 @@
+service: aws-demo-layers-boilerplate
+
+frameworkVersion: '2'
+
+custom:
+  defaultStage: dev
+  project: demo-project
+  developer: Ujjawal Poudel
+  team: demo-team
+
+
+provider:
+  name: aws
+  runtime: python3.7
+  profile: demoProfile
+  region: ap-south-1
+  logRetentionInDays: 1
+  lambdaHashingVersion: 20201221 # optional, version of hashing algorithm that should be used by the framework
+  stage: ${opt:stage, self:custom.defaultStage}
+  deploymentBucket:
+    blockPublicAccess: true
+    name: ${self:service}-${self:provider.stage}
+    maxPreviousDeploymentArtifacts: 10
+  stackTags: # Optional CF stack tags
+    btlTeam: ${self:custom.team}
+    btlDeveloper: ${self:custom.developer}
+    btlProject: ${self:custom.project}
+
+plugins:
+  - serverless-deployment-bucket
+
+layers:
+  Pymongo:
+    path: layers/tools/pymongo
+    name: ${self:service}-${self:provider.stage}-pymongo
+    description: "Lambda layer for python 3.7 for pymongo"
+    compatibleRuntimes:
+      - python3.7
+    retain: false
+
+  Pandas:
+    path: layers/tools/pandas
+    name: ${self:service}-${self:provider.stage}-pandas
+    description: "Lambda layer for python 3.7 for pandas"
+    compatibleRuntimes:
+      - python3.7
+    retain: false
+
+resources:
+  - ${file(layer.yml)}
