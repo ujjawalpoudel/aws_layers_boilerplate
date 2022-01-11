@@ -1,4 +1,4 @@
-service: aws-demo-layers-boilerplate
+service: demo-aws-layers
 
 frameworkVersion: '2'
 
@@ -19,7 +19,7 @@ provider:
   stage: ${opt:stage, self:custom.defaultStage}
   deploymentBucket:
     blockPublicAccess: true
-    name: ${self:service}-${self:provider.stage}
+    name: ${self:service}
     maxPreviousDeploymentArtifacts: 10
   stackTags: # Optional CF stack tags
     btlTeam: ${self:custom.team}
@@ -42,6 +42,14 @@ layers:
     path: layers/tools/pandas
     name: ${self:service}-${self:provider.stage}-pandas
     description: "Lambda layer for python 3.7 for pandas"
+    compatibleRuntimes:
+      - python3.7
+    retain: false
+
+  Mongoengine:
+    path: layers/tools/mongoengine
+    name: ${self:service}-${self:provider.stage}-mongoengine
+    description: "Lambda layer for python 3.7 for mongoengine"
     compatibleRuntimes:
       - python3.7
     retain: false

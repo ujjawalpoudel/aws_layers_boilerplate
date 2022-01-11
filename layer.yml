@@ -8,3 +8,8 @@ Outputs:
     Value: !Ref PandasLambdaLayer
     Export:
       Name: !Sub ${self:provider.stage}PandasLambdaLayer
+
+  MongoengineLambdaLayer:
+    Value: !Ref MongoengineLambdaLayer
+    Export:
+      Name: !Sub ${self:provider.stage}MongoengineLambdaLayer
