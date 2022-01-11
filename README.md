@@ -34,11 +34,17 @@ pip install -r layers/tools/pandas.txt -t layers/tools/pandas/python/lib/python3
 pip install -r layers/tools/mongoengine.txt -t layers/tools/mongoengine/python/lib/python3.7/site-packages/ --upgrade
 ```
 
+**Package for Pydantic**
+```bash
+pip install -r layers/tools/pydantic.txt -t layers/tools/pydantic/python/lib/python3.7/site-packages/ --upgrade
+```
+
 After deployed, you can access this layes using following name:
 ```bash
 ${self:provider.stage}PymongoLambdaLayer
 ${self:provider.stage}PandasLambdaLayer
 ${self:provider.stage}MongoengineLambdaLayer
+${self:provider.stage}PydanticLambdaLayer
 ```
 
 

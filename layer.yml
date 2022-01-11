@@ -13,3 +13,8 @@ Outputs:
     Value: !Ref MongoengineLambdaLayer
     Export:
       Name: !Sub ${self:provider.stage}MongoengineLambdaLayer
+
+  PydanticLambdaLayer:
+    Value: !Ref PydanticLambdaLayer
+    Export:
+      Name: !Sub ${self:provider.stage}PydanticLambdaLayer

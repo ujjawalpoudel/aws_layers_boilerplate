@@ -54,5 +54,13 @@ layers:
       - python3.7
     retain: false
 
+  Pydantic:
+    path: layers/tools/pydantic
+    name: ${self:service}-${self:provider.stage}-pydantic
+    description: "Lambda layer for python 3.7 for pydantic"
+    compatibleRuntimes:
+      - python3.7
+    retain: false
+
 resources:
   - ${file(layer.yml)}
