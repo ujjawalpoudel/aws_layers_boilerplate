@@ -1,20 +1,5 @@
 Outputs:
-  PymongoLambdaLayer:
-    Value: !Ref PymongoLambdaLayer
-    Export:
-      Name: !Sub ${self:provider.stage}PymongoLambdaLayer
-
-  PandasLambdaLayer:
-    Value: !Ref PandasLambdaLayer
-    Export:
-      Name: !Sub ${self:provider.stage}PandasLambdaLayer
-
   MongoengineLambdaLayer:
     Value: !Ref MongoengineLambdaLayer
     Export:
       Name: !Sub ${self:provider.stage}MongoengineLambdaLayer
-
-  PydanticLambdaLayer:
-    Value: !Ref PydanticLambdaLayer
-    Export:
-      Name: !Sub ${self:provider.stage}PydanticLambdaLayer
