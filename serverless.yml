@@ -1,42 +1,46 @@
-service: aws-layers-demo
+service: tbd-layers-sandbox
 
 frameworkVersion: '2'
 
 custom:
   defaultStage: dev
-  project: demo-project
+  project: tbd
   developer: Ujjawal Poudel
-  team: demo-team
+  team: tbd-backend
 
 
 provider:
   name: aws
-  runtime: python3.7
-  profile: demoProfile
+  runtime: python3.8
+  profile: sandbox
   region: ap-south-1
   logRetentionInDays: 1
   lambdaHashingVersion: 20201221 # optional, version of hashing algorithm that should be used by the framework
   stage: ${opt:stage, self:custom.defaultStage}
   deploymentBucket:
     blockPublicAccess: true
-    name: ${self:service}
+    name: sandbox-tbd-backend-dev
     maxPreviousDeploymentArtifacts: 10
   stackTags: # Optional CF stack tags
     btlTeam: ${self:custom.team}
     btlDeveloper: ${self:custom.developer}
     btlProject: ${self:custom.project}
 
-plugins:
-  - serverless-deployment-bucket
-
 layers:
   Mongoengine:
     path: layers/tools/mongoengine
     name: ${self:service}-${self:provider.stage}-mongoengine
-    description: "Lambda layer for python 3.7 for mongoengine"
+    description: "Lambda layer for python 3.8 for mongoengine"
     compatibleRuntimes:
-      - python3.7
+      - python3.8
     retain: false
 
-resources:
-  - ${file(layer.yml)}
+  ImageProcessing:
+    path: layers/tools/image-processing
+    name: ${self:service}-${self:provider.stage}-image-processing
+    description: "Lambda layer for python 3.8 for image-processing"
+    compatibleRuntimes:
+      - python3.8
+    retain: false
+
+

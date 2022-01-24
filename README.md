@@ -21,10 +21,10 @@ To deploy this project run
 
 **Package for Mongoengine**
 ```bash
-pip install -r layers/tools/mongoengine.txt -t layers/tools/mongoengine/python/lib/python3.7/site-packages/ --upgrade
+pip install -r layers/tools/mongoengine.txt -t layers/tools/mongoengine/python/lib/python3.8/site-packages/ --upgrade
 ```
 
-After deployed, you can access this layes using following name:
+**Package for Image Pocessing**
 ```bash
-${self:provider.stage}MongoengineLambdaLayer
+pip install -r layers/tools/image-processing.txt -t layers/tools/image-processing/python/lib/python3.8/site-packages/ --upgrade
 ```

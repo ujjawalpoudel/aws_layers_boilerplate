@@ -1,5 +1,0 @@
-Outputs:
-  MongoengineLambdaLayer:
-    Value: !Ref MongoengineLambdaLayer
-    Export:
-      Name: !Sub ${self:provider.stage}MongoengineLambdaLayer
